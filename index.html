@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Painel de Análise Jurídica com IA</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header><div class="brand"><div class="monogram">S &amp; S</div><div><div class="eyebrow">ADVOCACIA · AMBIENTE PRIVADO</div><h1>Painel de Análise Jurídica</h1><p>Leitura documental · cruzamento probatório · estratégia de defesa</p></div></div><button id="logout" class="ghost hidden">Sair</button></header>
+<main>
+<section id="login" class="panel narrow">
+<h2>Acesso restrito</h2><p>Entre com a senha configurada pelo administrador do servidor.</p>
+<form id="loginForm"><label>Senha<input id="password" type="password" autocomplete="current-password" required></label><button class="primary" type="submit">Entrar</button><div id="loginError" class="error"></div></form>
+</section>
+<section id="app" class="hidden">
+<div class="notice"><strong>Confidencialidade:</strong> os documentos são enviados ao servidor e processados pela API configurada. O sistema solicita respostas sem armazenamento de estado da resposta e apaga os arquivos temporários da API após o processamento. Isso não substitui avaliação das configurações de retenção, contrato, LGPD e política interna do escritório.</div>
+<section class="panel">
+<h2>1. Enviar documentos</h2>
+<p>Selecione até 15 arquivos, com limite de 20 MB por arquivo e 50 MB no conjunto. Formatos: PDF, DOC/DOCX, TXT, XLS/XLSX.</p>
+<label class="drop" id="drop"><input id="files" type="file" multiple accept=".pdf,.doc,.docx,.txt,.md,.xls,.xlsx"><span class="dropicon">＋</span><strong>Arraste os documentos aqui ou clique para selecionar</strong><small>Os documentos serão analisados individualmente e depois comparados entre si.</small></label>
+<ul id="fileList" class="filelist"></ul>
+<button id="analyze" class="primary" disabled>Analisar documentos com IA</button>
+<div id="status" class="status" aria-live="polite"></div>
+</section>
+<section id="results" class="hidden">
+<div class="resulthead"><div><div class="eyebrow">RESULTADO DA ANÁLISE</div><h2>Relatório e quadro probatório</h2></div><div class="actions"><button id="export" class="secondary">Exportar JSON</button><button id="print" class="secondary">Imprimir / salvar PDF</button></div></div>
+<div id="summary" class="panel"></div>
+<div class="tabs"><button class="tab active" data-tab="board">Quadro probatório</button><button class="tab" data-tab="timeline">Cronologia</button><button class="tab" data-tab="cross">Cruzamento e divergências</button><button class="tab" data-tab="strategy">Defesa e diligências</button><button class="tab" data-tab="draft">Minuta-base</button><button class="tab" data-tab="individual">Análise por documento</button></div>
+<div id="tab-board" class="panel tabcontent"></div><div id="tab-timeline" class="panel tabcontent hidden"></div><div id="tab-cross" class="panel tabcontent hidden"></div><div id="tab-strategy" class="panel tabcontent hidden"></div><div id="tab-draft" class="panel tabcontent hidden"></div><div id="tab-individual" class="panel tabcontent hidden"></div>
+</section>
+</section>
+<footer>Ferramenta de apoio. A análise da IA não substitui a leitura dos originais, a conferência dos autos nem o juízo profissional do advogado.</footer>
+</main>
+<script src="/app.js" defer></script>
+</body></html>
